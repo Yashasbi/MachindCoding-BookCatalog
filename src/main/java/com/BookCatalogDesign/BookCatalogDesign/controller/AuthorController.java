@@ -41,4 +41,8 @@ public class AuthorController {
         bookList.forEach(book -> bookOutput.add(objectMapper.convertValue(book,BookOutput.class)));
         return bookOutput;
     }
+//    @RequestMapping(value = "getMostSoldBooks/{authorName}",method = RequestMethod.GET)
+//    public List<Book> getMostSoldBooks(@PathVariable String authorName){
+//
+//    }
 }

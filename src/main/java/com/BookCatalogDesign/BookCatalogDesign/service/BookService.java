@@ -40,4 +40,7 @@ public class BookService {
             throw new NoSucBookExistsInDb("There is no such book with bookName " +bookName + ".Please enter a valid bookName");
         }
     }
+    public Book getMostSoldBookByLimit(){
+        return bookDao.getMostSoldBookByLimit();
+    }
 }

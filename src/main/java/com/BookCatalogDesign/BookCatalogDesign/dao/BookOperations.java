@@ -14,4 +14,5 @@ public interface BookOperations {
     public List<Book> getMostSoldBooks(UUID authorId);
     public List<Book> searchBook(String bookName);
     public List<Book> getBookByAuthorId(UUID authorId);
+    public Book getMostSoldBookByLimit();
 }

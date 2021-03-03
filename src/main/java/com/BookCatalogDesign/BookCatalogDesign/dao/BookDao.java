@@ -62,10 +62,18 @@ public class BookDao implements BookOperations{
         return Collections.emptyList();
     }
 
+    @Override
+    public Book getMostSoldBookByLimit() {
+        Map.Entry<UUID,Book> maxValue = null;
+        for(Map.Entry<UUID,Book> currentValue :storeAllBookDetails.entrySet() ){
+            if(maxValue == null || maxValue.getValue().getSoldCount()<currentValue.getValue().getSoldCount()){
+                maxValue = currentValue;
+            }
+        }
+        return maxValue.getValue();
+    }
+
     public List<Book> searchBookByBookName(String bookName){
         return searchBook(bookName);
     }
-
-
-
 }

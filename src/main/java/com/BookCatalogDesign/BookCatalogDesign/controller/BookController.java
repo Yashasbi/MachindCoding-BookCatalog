@@ -28,7 +28,7 @@ public class BookController {
         return bookService.addBookToDb(book);
     }
     @RequestMapping(value = "getBookByBookName/{bookName}",method = RequestMethod.GET)
-    public List<BookOutput> getBookByBookName(@PathVariable String bookName) throws NoSucBookExistsInDb {
+    public List<BookOutput> searchBookByBookName(@PathVariable String bookName) throws NoSucBookExistsInDb {
         List<Book> bookDetails = bookService.searchBookInDb(bookName);
         List<BookOutput> bookOutputs = new ArrayList<>();
         bookDetails.forEach(book -> {
@@ -37,8 +37,13 @@ public class BookController {
         return bookOutputs;
     }
     @RequestMapping(value = "getListOfBookByCategory" ,method = RequestMethod.GET)
-    public BookCategoryOutput[] getAllBookCategory(){
+    public BookCategoryOutput[] getListOfCategories(){
         return BookCategoryOutput.values();
+    }
+
+    @RequestMapping(value = "getMostSoldBooks" ,method = RequestMethod.GET)
+    public Book getMostSoldBookByLimit(){
+        return bookService.getMostSoldBookByLimit();
     }
 
 
