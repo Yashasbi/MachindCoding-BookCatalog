@@ -15,14 +15,14 @@ import java.util.Optional;
 public class BookService {
     @Autowired
     BookDao bookDao;
-    public String addBookToDb(Book b){
+    public String addBookToDb(Book book){
         try {
-               Optional<Book> fetchedBook = bookDao.searchBookByBookId(b.getBookId());
+               Optional<Book> fetchedBook = bookDao.searchBookByBookId(book.getBookId());
                 if(fetchedBook.isPresent()){
                     throw new DuplicateBookFoundException("This book is already inserted in the database.Try inserting another book.");
                 }
                 else{
-                    bookDao.addBookToCatalog(b);
+                    bookDao.addBookToCatalog(book);
                 }
 
             }
@@ -32,7 +32,6 @@ public class BookService {
         return "Book successfully added to db";
     }
     public List<Book> searchBookInDb(String bookName) throws NoSucBookExistsInDb {
-        System.out.println("Service");
         List<Book> book = bookDao.searchBookByBookName(bookName);
         if(book.size() != 0) {
             return book;

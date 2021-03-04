@@ -37,7 +37,6 @@ public class BookDao implements BookOperations{
     }
     @Override
     public List<Book> searchBook(String fieldToBeSearched){
-        System.out.println("Dao");
         List<Book> list = new ArrayList<>();
         for (UUID key : storeAllBookDetails.keySet()) {
             Book book = storeAllBookDetails.get(key);
